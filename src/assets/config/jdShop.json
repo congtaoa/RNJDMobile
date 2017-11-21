@@ -1,0 +1,73 @@
+[
+    {
+        "title": "休闲零食",
+        "headImage": [
+            {
+                "image":"https://m.360buyimg.com/mobilecms/s528x180_jfs/t5032/108/1429162543/264527/d9cc0204/58f095a1Nf0488928.png"
+            }
+        ],
+        "list": [
+            {
+                "title": "坚果超市",
+                "image": "https://m.360buyimg.com/mobile/s100x100_jfs/t4594/100/2540685747/6339/99e6d536/58f0724bNe149ff20.jpg"
+            },
+            {
+                "title": "糖巧",
+                "image": "https://m.360buyimg.com/mobile/s100x100_jfs/t4513/200/2516718473/5414/f8583fb0/58f072adN314e9f76.jpg"
+            },
+            {
+                "title": "休闲零食",
+                "image": "https://m.360buyimg.com/mobile/s100x100_jfs/t5047/127/1392139402/6890/2c1700a1/58f072dbNe544fb2d.jpg"
+            },
+            {
+                "title": "肉干肉脯",
+                "image": "https://m.360buyimg.com/mobile/s100x100_jfs/t4627/155/2553839360/4249/a492d0d3/58f07337N14cdfcea.jpg"
+            },
+            {
+                "title": "饼干蛋糕",
+                "image": "https://m.360buyimg.com/mobile/s100x100_jfs/t4828/57/1412955471/5250/83ac47ce/58f07366Nb29bee7a.jpg"
+            },
+            {
+                "title": "蜜饯果干",
+                "image": "https://m.360buyimg.com/mobile/s100x100_jfs/t4888/268/1442970414/5403/fe7df6cc/58f0739bN14eb18f2.jpg"
+            },
+            {
+                "title": "无糖食品",
+                "image": "https://m.360buyimg.com/mobile/s100x100_jfs/t4627/173/2549492661/4747/c5bf3ed8/58f073dfNeb2e3869.jpg"
+            }
+        ]
+    },
+    {
+        "title": "京东生鲜",
+        "list": [
+            {
+                "title": "新鲜水果",
+                "image": "https://m.360buyimg.com/mobile/s100x100_jfs/t5530/63/981960855/22129/4202b079/5909ce8cN670cf42c.png"
+            },
+            {
+                "title": "海鲜水产",
+                "image": "https://m.360buyimg.com/mobile/s100x100_jfs/t4582/13/4086328107/17310/9b25bbc/5909cfd2N0be4774b.jpg"
+            },
+            {
+                "title": "精选肉类",
+                "image": "https://m.360buyimg.com/mobile/s100x100_jfs/t4660/318/4089657302/21051/7775c366/5909cee0Nc1163a06.jpg"
+            },
+            {
+                "title": "蛋类",
+                "image": "https://m.360buyimg.com/mobile/s100x100_jfs/t5329/297/941972445/16039/fb6a5de/59099508Nb09ab5b7.jpg"
+            },
+            {
+                "title": "新鲜蔬菜",
+                "image": "https://m.360buyimg.com/mobile/s100x100_jfs/t5227/78/964830091/88145/cea6ea53/5909cf0fN14f131d0.png"
+            },
+            {
+                "title": "冰冻食品",
+                "image": "https://m.360buyimg.com/mobile/s100x100_jfs/t4843/310/1409792266/5391/e15e54cf/58f07582N8931b995.jpg"
+            },
+            {
+                "title": "饮品甜品",
+                "image": "https://m.360buyimg.com/mobile/s100x100_jfs/t4948/354/1426934318/7721/27483e5/58f075afN6114e02d.jpg"
+            }
+        ]
+    }
+]

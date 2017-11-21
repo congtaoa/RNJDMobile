@@ -1,0 +1,6 @@
+platform :ios, '8.0'
+target 'RNJDMobile' do
+    pod "JSONModel"
+  pod 'react-native-splash-screen', :path => '../node_modules/react-native-splash-screen'
+
+end

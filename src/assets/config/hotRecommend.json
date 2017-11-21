@@ -1,0 +1,56 @@
+[
+    {
+        "title": "专场推荐",
+        "headImage": [
+            {
+                "image":"https://m.360buyimg.com/mobilecms/s528x180_jfs/t5575/192/836516334/41089/b6339879/592244c5Nca357e96.jpg"
+            },
+            {
+                "image":"https://img1.360buyimg.com/da/jfs/t6028/245/8900484267/73002/27116c53/598d7eafNb8e1e26b.jpg"
+            }
+        ],
+        "list": [
+            {
+                "title": "玩具乐器",
+                "image": "https://m.360buyimg.com/n1/jfs/t3259/208/8264204671/210630/e07440db/58c251c0N302bc18c.jpg!q70.jpg"
+            },
+            {
+                "title": "第二件半价",
+                "image": "https://m.360buyimg.com/mobilecms/jfs/t4627/260/3500453989/8446/52b7bccb/58ff1d38Nbe2bc11c.jpg!q70.jpg"
+            }
+        ]
+    },
+    {
+        "title": "热门分类",
+        "list": [
+            {
+                "title": "手机",
+                "image": "https://m.360buyimg.com/mobile/s100x100_jfs/t5287/96/2524539020/7416/2254576a/591baf41Nc796b7a1.jpg"
+            },
+            {
+                "title": "笔记本",
+                "image": "https://m.360buyimg.com/mobile/s100x100_jfs/t340/186/1520019972/4535/fc9624f9/543c8f8aN9eab4fa0.jpg"
+            },
+            {
+                "title": "空调",
+                "image": "https://m.360buyimg.com/mobile/s100x100_jfs/t2893/176/1045856721/6331/21075b96/5732d235N90395e10.jpg"
+            },
+            {
+                "title": "收纳用品",
+                "image": "https://m.360buyimg.com/mobile/s100x100_jfs/t310/345/1515921787/4739/6bd8f7e4/543cd113Nb6638c8e.jpg"
+            },
+            {
+                "title": "砂锅",
+                "image": "https://m.360buyimg.com/mobile/s100x100_jfs/t331/362/1515835677/3566/461716a8/543c8a67Ne129f018.jpg"
+            },
+            {
+                "title": "啤酒",
+                "image": "https://m.360buyimg.com/mobile/s100x100_jfs/t913/290/173123020/11082/e3dd8c46/5507c2e4N78755364.jpg"
+            },
+            {
+                "title": "火车票",
+                "image": "https://m.360buyimg.com/mobile/s100x100_jfs/t2647/276/633288982/11637/e9bb1b7a/571dc6a8Nbd641f1b.jpg"
+            }
+        ]
+    }
+]
