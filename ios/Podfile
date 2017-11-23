@@ -3,4 +3,6 @@ target 'RNJDMobile' do
     pod "JSONModel"
   pod 'react-native-splash-screen', :path => '../node_modules/react-native-splash-screen'
 
+  pod 'react-native-blur', :path => '../node_modules/react-native-blur'
+
 end

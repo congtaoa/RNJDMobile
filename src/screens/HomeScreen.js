@@ -10,6 +10,7 @@ import {
     StatusBar,
     Animated,
     Dimensions,
+    ImageBackground,
     RefreshControl
 } from 'react-native'
 
@@ -19,6 +20,7 @@ import Image from 'react-native-image-progress';
 import Carousel, { ParallaxImage } from 'react-native-snap-carousel';
 import Toast from 'react-native-root-toast';
 import SplashScreen from 'react-native-splash-screen';
+import {BlurView, VibrancyView } from 'react-native-blur';
 
 import SliderEntry from '../views/home/SliderEntry';
 import { sliderWidth, itemWidth } from '../views/styles/SliderEntry.style';
@@ -50,7 +52,7 @@ export  default class HomeScreen extends Component {
             scrollOffset:0,
             isRefreshing:false,
             currentTime:'',
-            slider1ActiveSlide: SLIDER_1_FIRST_ITEM,
+            slider1ActiveSlide: SLIDER_1_FIRST_ITEM, // 卡片 轮循位置
             headImageList:IConstants.headerImageList,
             menuButtonList:IConstants.menuButtonList,
             fastNewsList:IConstants.fastNewsList,
@@ -60,7 +62,9 @@ export  default class HomeScreen extends Component {
             enjoyQualityList:IConstants.enjoyQualityList,
             twoFirstImageList:IConstants.twoFirstImageList,
             goShoppingList:IConstants.goShoppingList,
-            twoSecondImageList:IConstants.twoSecondImageList
+            twoSecondImageList:IConstants.twoSecondImageList,
+            cardImageList:IConstants.ENTRIES1,
+            bgImageUrl:IConstants.ENTRIES1[SLIDER_1_FIRST_ITEM].imageUrl, // 卡片轮循背景, 默认第二个开始
         }
         this.endTime = new Date(Date.now() + (3600 * 1000));
     }
@@ -366,32 +370,35 @@ export  default class HomeScreen extends Component {
                             }
                         </RNSwiper>
                     </View> */}
-                    <View>
+                    <ImageBackground source={{uri:this.state.bgImageUrl}} style={{width:IConstants.width,height:250}}>
+                        <BlurView blurType={'light'} blurAmount={10}
+                            style={styles.blurView} 
+                        />
                         <Carousel
                             ref={(c) => { this._carousel = c; }}
-                            data={IConstants.ENTRIES1}
+                            data={this.state.cardImageList}
                             renderItem={this._renderItemWithParallax}
                             sliderWidth={sliderWidth}
                             itemWidth={itemWidth}
                             hasParallaxImages={true}
                             firstItem={SLIDER_1_FIRST_ITEM} // 默认第几个开始
-                            inactiveSlideScale={0.88}
+                            inactiveSlideScale={0.85}
                             inactiveSlideOpacity={1}
                             enableMomentum={false}
                             containerCustomStyle={{marginVertical:25}}
                             contentContainerCustomStyle={styles.sliderContentContainer}
                             loop={true}
                             loopClonesPerSide={2}
-                            autoplay={true}
+                            autoplay={false}
                             autoplayDelay={500}
                             autoplayInterval={4000}
                             onSnapToItem={(index) => {
                                 // 滑动事件回调，滑到哪一个
-                                this.setState({ slider1ActiveSlide: index });
+                                this.setState({ slider1ActiveSlide: index ,bgImageUrl:this.state.cardImageList[index].imageUrl});
                                 // Toast.show(index,{position: Toast.positions.CENTER});
                             }}
                         />
-                    </View>
+                    </ImageBackground>
                     
                 </Animated.ScrollView>
                 {
@@ -570,6 +577,10 @@ const styles = StyleSheet.create({
     },
     sliderContentContainer:{
 
+    },
+    blurView:{
+        position:'absolute',
+        top:0,bottom:0,left:0,right:0
     }
 });
 
