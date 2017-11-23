@@ -12,14 +12,16 @@ import {
     Dimensions,
     RefreshControl
 } from 'react-native'
-// import NavigationBar from "../widget/NavigationBar";
-import NavigatorOpacityBar from "../widget/NavigatorOpacityBar";
+
 import Swiper from '../widget/Swiper';
 import Image from 'react-native-image-progress'; 
-import RNSwiper from 'react-native-3d-swiper';
-import Carousel from 'react-native-snap-carousel';
+// import RNSwiper from 'react-native-3d-swiper';
+import Carousel, { ParallaxImage } from 'react-native-snap-carousel';
 import Toast from 'react-native-root-toast';
 import SplashScreen from 'react-native-splash-screen';
+
+import SliderEntry from '../views/home/SliderEntry';
+import { sliderWidth, itemWidth } from '../views/styles/SliderEntry.style';
 
 import * as IConstants from '../widget/IConstants';
 import HomeHeaderView from "../views/home/HomeHeaderView";
@@ -34,7 +36,7 @@ import HomeNewShopView from "../views/home/HomeNewShopView";
 import backtoTop from '../assets/images/backtop.png';
 import droptoRec from '../assets/images/drop.png';
 
-
+const SLIDER_1_FIRST_ITEM = 1;
 // create a component
 export  default class HomeScreen extends Component {
     
@@ -48,6 +50,7 @@ export  default class HomeScreen extends Component {
             scrollOffset:0,
             isRefreshing:false,
             currentTime:'',
+            slider1ActiveSlide: SLIDER_1_FIRST_ITEM,
             headImageList:IConstants.headerImageList,
             menuButtonList:IConstants.menuButtonList,
             fastNewsList:IConstants.fastNewsList,
@@ -316,7 +319,7 @@ export  default class HomeScreen extends Component {
                     {/* 发现好店 */}
                     <View style={{ justifyContent: 'center',alignItems:'center', width:'100%',height:35,backgroundColor:'rgba(0,0,0,0.05)'}}>
                             <Image source={{uri:'https://m.360buyimg.com/mobilecms/jfs/t3262/58/5673226654/6672/fcc818b3/587c8b2bNec769cc1.png!q70.jpg'}} 
-                                style={{width:60,height:18}} 
+                                style={{width:80,height:25}} 
                             />
                     </View>
 
@@ -330,9 +333,10 @@ export  default class HomeScreen extends Component {
                     {/* 优选清单 */}
                     <View style={{ justifyContent: 'center',alignItems:'center', width:'100%',height:35,backgroundColor:'rgba(0,0,0,0.05)'}}>
                             <Image source={{uri:'https://m.360buyimg.com/mobilecms/jfs/t3205/189/6084932005/5424/1f04049d/589a8ce3Nb18b2ded.png!q70.jpg'}} 
-                                style={{width:60,height:18}} 
+                                style={{width:80,height:25}} 
                             />
                     </View>
+                    <View style={{height:30}}/>
                     {/* 京东直播 */}
                     <View style={{ justifyContent: 'center',alignItems:'center', width:'100%',height:35,backgroundColor:'rgba(0,0,0,0.05)'}}>
                             <TouchableOpacity  activeOpacity={1} onPress={() => {this.liveListTapped()}}>
@@ -341,7 +345,7 @@ export  default class HomeScreen extends Component {
                                 />
                             </TouchableOpacity>
                     </View>
-                    <View style={{flex:1,paddingTop:15,paddingBottom:15}}>
+                    {/* <View style={{flex:1,paddingTop:15,paddingBottom:15}}>
                         <RNSwiper
                             minimumScale={0.55}  //scale of out of focus components
                             // opacity of out of focus components
@@ -361,6 +365,32 @@ export  default class HomeScreen extends Component {
                                 )
                             }
                         </RNSwiper>
+                    </View> */}
+                    <View>
+                        <Carousel
+                            ref={(c) => { this._carousel = c; }}
+                            data={IConstants.ENTRIES1}
+                            renderItem={this._renderItemWithParallax}
+                            sliderWidth={sliderWidth}
+                            itemWidth={itemWidth}
+                            hasParallaxImages={true}
+                            firstItem={SLIDER_1_FIRST_ITEM} // 默认第几个开始
+                            inactiveSlideScale={0.88}
+                            inactiveSlideOpacity={1}
+                            enableMomentum={false}
+                            containerCustomStyle={{marginVertical:25}}
+                            contentContainerCustomStyle={styles.sliderContentContainer}
+                            loop={true}
+                            loopClonesPerSide={2}
+                            autoplay={true}
+                            autoplayDelay={500}
+                            autoplayInterval={4000}
+                            onSnapToItem={(index) => {
+                                // 滑动事件回调，滑到哪一个
+                                this.setState({ slider1ActiveSlide: index });
+                                // Toast.show(index,{position: Toast.positions.CENTER});
+                            }}
+                        />
                     </View>
                     
                 </Animated.ScrollView>
@@ -384,7 +414,6 @@ export  default class HomeScreen extends Component {
                 {
                     !this.state.isRefreshing
                     ?
-                    // <NavigatorOpacityBar minOpacity={0}  hideLeft={true} isBarOpacity={false} scrollOpacityValue={this.state.scrollOffset} titleView={headView} />
                     <Animated.View style={{position:'absolute',top:0,width:IConstants.width,height:64,paddingTop:20,left:0,backgroundColor}}>
                         <HomeHeaderView changedY={this.state.scrollOffset} intelligentVoice={()=>{this.intelligentVoice()}} scanTapped={()=>{this.scanTapped()}} />
                     </Animated.View>
@@ -393,6 +422,17 @@ export  default class HomeScreen extends Component {
                 }
                 
             </View>
+        );
+    }
+
+    _renderItemWithParallax ({item, index}, parallaxProps) {
+        return (
+            <SliderEntry
+                data={item}
+                even={(index + 1) % 2 === 0}
+                parallax={true}
+                parallaxProps={parallaxProps}
+            />
         );
     }
 
@@ -409,20 +449,21 @@ export  default class HomeScreen extends Component {
      * 
      * @param {直播项轮循图、切换、点击}  
      */
-    onSwipeUp(index){
-        //parameter returned is the index of active child
-    }
+    // onSwipeUp(index){
+    //     //parameter returned is the index of active child
+    // }
       
-    onSwipeDown(index){
-    //parameter returned is the index of active child
-    }
+    // onSwipeDown(index){
+    // //parameter returned is the index of active child
+    // }
       
-    onPress(index){
-    //parameter returned is the index of active child
-        console.log(index)
-        Toast.show(index,{position: Toast.positions.CENTER});
-    }
+    // onPress(index){
+    // //parameter returned is the index of active child
+    //     console.log(index)
+    //     Toast.show(index,{position: Toast.positions.CENTER});
+    // }
 
+    
     liveListTapped()
     {
         // this.props.navigation.navigate('LiveVideoListScreen',{ transition: 'forVertical' });
@@ -526,6 +567,9 @@ const styles = StyleSheet.create({
     card:{
         width:'100%',
         height:200,
+    },
+    sliderContentContainer:{
+
     }
 });
 

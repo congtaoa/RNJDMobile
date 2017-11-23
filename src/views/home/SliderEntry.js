@@ -57,7 +57,7 @@ import { withNavigation } from 'react-navigation';
               activeOpacity={1}
               style={styles.slideInnerContainer}
               onPress={() => { 
-                //   alert(`You've clicked '${title1}'`); 
+                //   alert(`You've clicked '${this.props.data.title1}'`); 
                     this.props.navigation.navigate('TransfTestScreen');
                 }}
             >
