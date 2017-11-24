@@ -11,7 +11,8 @@ import {
     TouchableOpacity,
     ViewPagerAndroid,
     Platform,
-    ActivityIndicator
+    ViewPropTypes,
+    ActivityIndicator,
 } from 'react-native'
 import PropTypes  from 'prop-types'
 
@@ -101,7 +102,7 @@ export default class extends Component {
     static propTypes = {
         horizontal: PropTypes.bool,
         children: PropTypes.node.isRequired,
-        style: View.propTypes.style,
+        style: ViewPropTypes.style,// View.propTypes.style,    **View.propTypes.style isn't valid and printed a deprecation message for several releases before it was removed. Use ViewPropTypes.style instead.
         pagingEnabled: PropTypes.bool,
         showsHorizontalScrollIndicator: PropTypes.bool,
         showsVerticalScrollIndicator: PropTypes.bool,
