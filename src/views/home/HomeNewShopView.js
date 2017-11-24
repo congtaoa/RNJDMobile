@@ -24,22 +24,22 @@ export default class HomeNewShopView extends Component{
         return (
             <View style={[this.props.borderStyles,styles.container]}>
                 <Text style={[this.props.headColorStyles,styles.head]} >{item.head}</Text>
-                <Text style={[styles.subTitle,this.props.subTitleStyles]} numberOfLines={1}>{item.head}</Text>
+                <Text style={[styles.subTitle,this.props.subTitleStyles]} numberOfLines={1}>{item.subTitle}</Text>
                 <View style={styles.midImage}>
                     <View style={{padding:5,backgroundColor:'rgba(0,0,0,0.03)'}}>
-                         <Image source={{ uri:item.image }} style={{ width: commonWidth*0.63 - 10, height: 80 }} />
+                         <Image source={{ uri:item.image }} resizeMode='contain' style={{ width: commonWidth*0.63 - 10, height: 80 }} />
                     </View>
                    <View style={styles.rightImage}>
                         <View style={{margin:2,padding:3,backgroundColor:'rgba(0,0,0,0.03)'}}>
-                            <Image source={{ uri:item.image }} style={{ width: commonWidth*0.35 - 10, height: 37 }} />
+                            <Image source={{ uri:item.secondImage }} resizeMode='contain' style={{ width: commonWidth*0.35 - 10, height: 37 }} />
                         </View>
                         <View style={{margin:2,padding:3,backgroundColor:'rgba(0,0,0,0.03)'}}>
-                            <Image source={{ uri:item.image }} style={{width: commonWidth*0.35 - 10, height: 37 }} />
+                            <Image source={{ uri:item.thirdImage }} resizeMode='contain' style={{width: commonWidth*0.35 - 10, height: 37 }} />
                         </View>    
                    </View>
                 </View>
                 <View style={styles.bottomView}>
-                    <Text style={styles.bottomTitle}>罗马仕官方旗舰店</Text>
+                    <Text style={styles.bottomTitle}>{item.shopName}</Text>
                 </View>
             </View> 
         );
@@ -53,7 +53,7 @@ const styles = StyleSheet.create({
         // justifyContent: 'space-between',
         paddingLeft:5,
         paddingRight:5,
-        paddingTop:5,
+        paddingTop:8,
         paddingBottom:5,
     },
     head:{

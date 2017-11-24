@@ -42,7 +42,6 @@ const SLIDER_1_FIRST_ITEM = 1;
 // create a component
 export  default class HomeScreen extends Component {
     
-    // _scrollView = ScrollView;
     constructor(props) {
         super(props)
 
@@ -53,7 +52,7 @@ export  default class HomeScreen extends Component {
             isRefreshing:false,
             currentTime:'',
             slider1ActiveSlide: SLIDER_1_FIRST_ITEM, // 卡片 轮循位置
-            headImageList:IConstants.headerImageList,
+            headImageList:IConstants.headerImageList, 
             menuButtonList:IConstants.menuButtonList,
             fastNewsList:IConstants.fastNewsList,
             secKillList:IConstants.secKillList,
@@ -63,6 +62,7 @@ export  default class HomeScreen extends Component {
             twoFirstImageList:IConstants.twoFirstImageList,
             goShoppingList:IConstants.goShoppingList,
             twoSecondImageList:IConstants.twoSecondImageList,
+            founAndList:IConstants.foundAndList,
             cardImageList:IConstants.ENTRIES1,
             bgImageUrl:IConstants.ENTRIES1[SLIDER_1_FIRST_ITEM].imageUrl, // 卡片轮循背景, 默认第二个开始
         }
@@ -329,7 +329,7 @@ export  default class HomeScreen extends Component {
 
                     <View style={{ flexWrap: 'wrap',flexDirection: 'row'}}>
                         {
-                            this.state.goShoppingList.slice(8,12).map((item, index)=> <TouchableOpacity key={index} style={{width:KscreenWidth/2 }} onPress={() => { this.liveImageTapped(item) }}>
+                            this.state.founAndList.slice(0,2).map((item, index)=> <TouchableOpacity key={index} style={{width:KscreenWidth/2 }} onPress={() => { this.liveImageTapped(item) }}>
                                <HomeNewShopView  headColorStyles={{color:'#444'}} subTitleStyles={{color:'rgba(142,34,233,0.8)'}} specialStyle={{backgroundColor:'rgb(44,86,246)'}} borderStyles={{borderBottomWidth:1,borderRightWidth:1,borderColor: 'rgba(0,0,0,0.05)'}} imageOneItem={item} /> 
                             </TouchableOpacity>)
                         }   
@@ -371,7 +371,7 @@ export  default class HomeScreen extends Component {
                         </RNSwiper>
                     </View> */}
                     <ImageBackground source={{uri:this.state.bgImageUrl}} style={{width:IConstants.width,height:250}}>
-                        <BlurView blurType={'light'} blurAmount={10}
+                        <BlurView blurType={'light'} blurAmount={5}
                             style={styles.blurView} 
                         />
                         <Carousel
@@ -419,13 +419,13 @@ export  default class HomeScreen extends Component {
                     null
                 }
                 {
-                    !this.state.isRefreshing
+                    this.state.scrollOffset < 0
                     ?
+                    null
+                    :
                     <Animated.View style={{position:'absolute',top:0,width:IConstants.width,height:64,paddingTop:20,left:0,backgroundColor}}>
                         <HomeHeaderView changedY={this.state.scrollOffset} intelligentVoice={()=>{this.intelligentVoice()}} scanTapped={()=>{this.scanTapped()}} />
                     </Animated.View>
-                    :
-                    null
                 }
                 
             </View>
