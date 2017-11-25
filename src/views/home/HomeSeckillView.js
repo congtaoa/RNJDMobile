@@ -136,7 +136,7 @@ const styles = StyleSheet.create({
     moreView:{
         alignItems: 'center',
         flexDirection: 'row',
-        width:24,
+        width:24, //宽度
     },
     moretitle:{
         fontSize:9,

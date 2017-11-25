@@ -20,7 +20,6 @@ export default class HomeNewShopView extends Component{
     render(){
         let item = this.props.imageOneItem;
         let commonWidth =  Dimensions.get('window').width/2 - 10;
-        // {width:commonWidth,height:135},
         return (
             <View style={[this.props.borderStyles,styles.container]}>
                 <Text style={[this.props.headColorStyles,styles.head]} >{item.head}</Text>
@@ -49,6 +48,7 @@ export default class HomeNewShopView extends Component{
  
 const styles = StyleSheet.create({
     container:{
+        flex:1,
         flexDirection: 'column',
         // justifyContent: 'space-between',
         paddingLeft:5,

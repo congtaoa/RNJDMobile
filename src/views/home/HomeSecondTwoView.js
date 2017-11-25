@@ -20,9 +20,15 @@ export default class HomeSecondTwoView extends Component{
         let item = this.props.imageTwoItem;
         let commonWidth =  Dimensions.get('window').width/2;
         return (
-            <View style={[{width:commonWidth,height:118},this.props.borderStyles,styles.container]}>
+            <View style={[{width:commonWidth},this.props.borderStyles,styles.container]}>
                 <Text style={[this.props.headColorStyles,styles.head]}>{item.head}</Text>
-                <Text style={[styles.subTitle,this.props.subTitleStyles]} numberOfLines={1}>{item.subTitle}</Text>
+                {
+                    item.subTitle != ''
+                    ?
+                    <Text style={[styles.subTitle,this.props.subTitleStyles]} numberOfLines={1}>{item.subTitle}</Text>
+                    :
+                    null
+                }
                 <View style={styles.rowImage}>
                     <Image source={{ uri:item.image }} style={{ width: 70, height: 75 }} />
                     <Image source={{ uri:item.secondImage }} style={{ width: 70, height: 75 }} />
@@ -34,6 +40,13 @@ export default class HomeSecondTwoView extends Component{
                         :
                         null
                 }
+                {
+                    item.rNum && item.rNum != ''
+                    ?
+                    <Text style={{fontSize:12,color:'#888',marginTop:7}}>—— 推荐<Text style={{color:'red'}}>{item.rNum}</Text>件单品 ——</Text>
+                    :
+                    null
+                }
             </View>  
         );
     }
@@ -42,6 +55,7 @@ export default class HomeSecondTwoView extends Component{
  
 const styles = StyleSheet.create({
     container:{
+        flex:1,
         alignItems: 'center',
         flexDirection: 'column',
         paddingLeft:5,

@@ -24,6 +24,7 @@ import iconMe from './assets/images/toolbar_me.png';
 import iconMeSelected from './assets/images/toolbar_me_active.png';
 
 import * as IConstants from './widget/IConstants';
+import EventBus from './widget/EventBus';
 
 const lightContentScenes = ['Home', 'Mine']
 
@@ -253,7 +254,30 @@ const Tab = TabNavigator(
         },
     },
     {
-        tabBarComponent: TabBarBottom,
+        // tabBarComponent: TabBarBottom, //默认组件
+        tabBarComponent: ({ jumpToIndex, ...props, navigation }) => (
+            <TabBarBottom
+                {...props}
+                jumpToIndex={tabIndex => {
+                    /**
+                      * tabBar点击事件
+                    */
+                    const { state } = navigation
+                    const { routes } = state
+                    if (state.index === tabIndex && routes[tabIndex].index !== 0){
+                        // ex:再次点击选中Tab 刷新当前tab
+                        if(tabIndex === 0){
+                            new EventBus().sendEvent({},IConstants.EventType.HOME_REFRESH);
+                        }else{
+                        //   Toast.show('再次点击选中Tab 刷新当前页面',{position: Toast.positions.CENTER});
+                        }
+                    }
+                    else {
+                        jumpToIndex(tabIndex)
+                    }
+                }}
+            />
+        ),
         tabBarPosition: 'bottom',
         swipeEnabled: false,
         animationEnabled: false,

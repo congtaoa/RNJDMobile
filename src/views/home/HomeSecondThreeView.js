@@ -20,7 +20,7 @@ export default class HomeSecondThreeView extends Component{
         let item = this.props.imageTwoItem;
         let commonWidth =  Dimensions.get('window').width/2;
         return (
-            <View style={[{width:commonWidth,height:118},this.props.borderStyles,styles.container]}>
+            <View style={[{width:commonWidth},this.props.borderStyles,styles.container]}>
                 <Text style={[this.props.headColorStyles,styles.head]}>{item.head}</Text>
                 <Text style={[styles.subTitle,this.props.subTitleStyles]} numberOfLines={1}>{item.subTitle}</Text>
                 <View style={styles.rowImage}>
@@ -43,6 +43,7 @@ export default class HomeSecondThreeView extends Component{
  
 const styles = StyleSheet.create({
     container:{
+        flex:1,
         alignItems: 'center',
         flexDirection: 'column',
         paddingLeft:5,

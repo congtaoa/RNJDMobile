@@ -21,7 +21,7 @@ export default class HomeRightOneView extends Component{
         let item = this.props.imageOneItem;
         let commonWidth =  Dimensions.get('window').width/2;
         return (
-            <View style={[{width:commonWidth,height:95},this.props.borderStyles,styles.container]}>
+            <View style={[{width:commonWidth,},this.props.borderStyles,styles.container]}>
                 <View style={styles.leftView}>
                     <Text style={[this.props.headColorStyles,styles.head]} >{item.head}</Text>
                     <Text style={[styles.subTitle,this.props.subTitleStyles]} numberOfLines={1}>{item.subTitle}</Text>
@@ -42,6 +42,7 @@ export default class HomeRightOneView extends Component{
  
 const styles = StyleSheet.create({
     container:{
+        flex:1,
         flexDirection: 'row',
         justifyContent: 'space-between',
         paddingLeft:5,

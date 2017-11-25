@@ -26,6 +26,7 @@ import { sliderWidth, itemWidth } from '../views/styles/SliderEntry.style';
 
 import  Tools from '../widget/Tools';
 import * as IConstants from '../widget/IConstants';
+import EventBus from '../widget/EventBus';
 import HomeHeaderView from "../views/home/HomeHeaderView";
 import HomeFastNewsView from "../views/home/HomeFastNewsView";
 import HomeSeckillView from "../views/home/HomeSeckillView";
@@ -99,13 +100,37 @@ export  default class HomeScreen extends Component {
         
         SplashScreen.hide()
     }
+
+    componentWillMount(){
+        new EventBus().registerEvent(this, IConstants.EventType.HOME_REFRESH);
+    }
+
+    componentWillUnmount(){
+        new EventBus().unregisterEvent(this, IConstants.EventType.HOME_REFRESH);
+    }
+
+    handleEvent(params,type){
+        if (type == IConstants.EventType.HOME_REFRESH) {
+            if(this.state.scrollOffset > 0){ // 如果已经滑动 先返回顶部再刷新
+                this.refs.listViewScroll._component.scrollToOffset({y: 0,animated: false});
+                setTimeout(()=>{
+                    this.setState({isRefreshing:true})
+                },150);
+            }else{
+                this.setState({isRefreshing:true})
+            }
+            setTimeout(()=>{
+                this.setState({isRefreshing: false});
+            },2000);
+        }
+    }
     
     render(){
       
         let backgroundColor = this.state.scrollY.interpolate({
             inputRange:[0,80],
             outputRange:['transparent','rgb(245,245,245)'],
-            extrapolate:'clamp',
+            // extrapolate:'clamp',
         });
         let headView = <HomeHeaderView changedY={this.state.scrollOffset} intelligentVoice={()=>{this.intelligentVoice()}} scanTapped={()=>{this.scanTapped()}} />
 
@@ -161,7 +186,7 @@ export  default class HomeScreen extends Component {
                        <Text style={{fontSize:9,color:'white'}}>{'推荐'}</Text>
                     </TouchableOpacity>
                     :
-                    <TouchableOpacity  style={styles.backToTop} activeOpacity={1} onPress={() => { this.refs.listViewScroll._component.scrollToOffset({y: 0});{animated: true} }}>
+                    <TouchableOpacity  style={styles.backToTop} activeOpacity={1} onPress={() => { this.refs.listViewScroll._component.scrollToOffset({y: 0,animated: true}) }}>
                       <Image source={backtoTop} />
                     </TouchableOpacity>
                 )
@@ -428,7 +453,7 @@ export  default class HomeScreen extends Component {
                 <View style={{ flexWrap: 'wrap',flexDirection: 'row'}}>
                     {
                         this.state.founAndList.slice(0,2).map((item, index)=> <TouchableOpacity key={index} style={{width:KscreenWidth/2 }} onPress={() => { this.liveImageTapped(item) }}>
-                           <HomeNewShopView  headColorStyles={{color:'#444'}} subTitleStyles={{color:'rgba(142,34,233,0.8)'}} specialStyle={{backgroundColor:'rgb(44,86,246)'}} borderStyles={{borderBottomWidth:1,borderRightWidth:1,borderColor: 'rgba(0,0,0,0.05)'}} imageOneItem={item} /> 
+                           <HomeNewShopView  headColorStyles={{color:'#444'}} subTitleStyles={{color:'rgba(223,92,78,0.7)'}} specialStyle={{backgroundColor:'rgb(44,86,246)'}} borderStyles={{borderBottomWidth:1,borderRightWidth:1,borderColor: 'rgba(0,0,0,0.05)'}} imageOneItem={item} /> 
                         </TouchableOpacity>)
                     }   
                 </View>
@@ -438,7 +463,14 @@ export  default class HomeScreen extends Component {
                             style={{width:80,height:25}} 
                         />
                 </View>
-                <View style={{height:30}}/>
+                <View style={{ flexWrap: 'wrap',flexDirection: 'row'}}>
+                    {
+                        this.state.founAndList.slice(2,4).map((item, index)=> <TouchableOpacity key={index} style={{width:KscreenWidth/2 }} onPress={() => { this.liveImageTapped(item) }}>
+                             <HomeSecondTwoView  headColorStyles={{color:'#444'}} subTitleStyles={{color:'rgba(223,92,78,0.7)'}} specialStyle={{backgroundColor:'rgb(223,92,78)'}} borderStyles={{borderRightWidth:1,borderTopWidth:1,borderColor: 'rgba(0,0,0,0.05)'}} imageTwoItem={item} /> 
+                        </TouchableOpacity>)
+                    }
+                </View>
+
                 {/* 京东直播 */}
                 <View style={{ justifyContent: 'center',alignItems:'center', width:'100%',height:35,backgroundColor:'rgba(0,0,0,0.05)'}}>
                     <Image source={{uri:'https://m.360buyimg.com/mobilecms/jfs/t3772/343/1287610868/4307/19445fcc/5821896aN934a58f3.png!q70.jpg'}} 
@@ -577,7 +609,7 @@ export  default class HomeScreen extends Component {
         
     }
     moreSecKillTapped(X){
-        if(X == (IConstants.width/5 + 10)*10 - IConstants.width + 24)
+        if(X == (IConstants.width/5 + 10)*10 - IConstants.width + 24) // 24：后面文字的宽度；10：间隔
         {
             this.props.navigation.navigate('TransfTestScreen',{})
         }

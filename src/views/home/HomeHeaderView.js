@@ -22,7 +22,7 @@ export default class HomeHeaderView extends Component{
         super(props);
     }
     render(){
-        let isChanged = (this.props.changedY > 80) ? true : false;
+        let isChanged = (this.props.changedY > 44) ? true : false;
         return (
             <View style={styles.bg}>
                 <TouchableOpacity activeOpacity={1} onPress={this.props.scanTapped}>

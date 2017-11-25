@@ -11,6 +11,11 @@ export const {width, height} = Dimensions.get('window');
 
 export const TOURIST_DAY_TYPE  = 'tourist_day_type';
 
+export const EventType = {
+  HOME_REFRESH: 'home_refresh',
+
+};
+
 export const ItemType = {
   Chi: 0,                 // 美食
   CanTing: 1,             // 餐厅
@@ -435,7 +440,7 @@ export const secKillList =
   [
     {
       "head": "手机通讯",
-      "subTitle": "是不是在挑手机?",
+      "subTitle": "是不是在找手机？",
       "special":"",
       "image":"https://img12.360buyimg.com/mobilecms/s220x220_jfs/t10165/119/370921696/402592/caf4a05e/59cda9aeNd3bcf902.jpg",
       "secondImage":"https://img11.360buyimg.com/mobilecms/s220x220_jfs/t6157/284/1655853472/314776/91431fa7/5955c6a1N0c69eab2.jpg",
@@ -453,19 +458,21 @@ export const secKillList =
     },
     {
       "head": "攻占高街时髦，经典小黑鞋打头阵",
-      "subTitle": "16",
+      "subTitle": "",
       "special":"",
       "image":"https://img12.360buyimg.com/mobilecms/s220x220_jfs/t6091/284/3118766368/180889/56d87ace/594c8cffNdf67df78.jpg",
       "secondImage":"https://img13.360buyimg.com/mobilecms/s220x220_jfs/t12895/354/561854608/38253/4da6e623/5a0e2173N6ba3c030.jpg",
-      "thirdImage":""
+      "thirdImage":"",
+      "rNum":"16"
     },
     {
       "head": "会按摩的平价洗衣机，洁净不伤衣",
-      "subTitle": "16",
+      "subTitle": "",
       "special":"",
       "image":"https://img14.360buyimg.com/mobilecms/s220x220_jfs/t4195/316/2665598069/44160/22e73a82/58d48a81N864af70a.jpg",
       "secondImage":"https://img10.360buyimg.com/mobilecms/s220x220_jfs/t2986/330/2296781313/64049/d520957/57a2f64dN8f3883de.jpg",
-      "thirdImage":""
+      "thirdImage":"",
+      "rNum":"20"
     }
   ];
 
