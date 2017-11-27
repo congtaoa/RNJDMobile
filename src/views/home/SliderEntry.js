@@ -75,8 +75,12 @@ import { withNavigation } from 'react-navigation';
                     </Text>
                 </View>  */}
 
-                <ImageBackground source={{uri:this.props.data.imageUrl}} style={styles.image}>
-
+                <ImageBackground source={{uri:this.props.data.imageUrl}} style={[styles.image,{flexDirection:'column'}]}>
+                    {/* <Text style={{margin:15,backgroundColor:'transparent',color:'red'}}>直播</Text> */}
+                    <View style={{margin:15,flexDirection:'column',flex:1,justifyContent:'flex-end'}}>
+                        <Text style={{marginVertical:5,color:'#eee',fontSize:12,backgroundColor:'transparent'}}>{this.props.data.subtitle1}</Text>
+                        <Text style={{color:'#fff',fontSize:15,backgroundColor:'transparent'}}>{this.props.data.title1}</Text>
+                    </View>
                 </ImageBackground>
 
             </TouchableOpacity>

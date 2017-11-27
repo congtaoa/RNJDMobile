@@ -35,33 +35,33 @@ export const COLOR_BAR = '#407ab0';
 
 export const ENTRIES1 = [
   {
-      title1: '1Beautiful and dramatic Antelope Canyon',
-      subtitle1: 'Lorem ipsum dolor sit amet et nuncat mergitur',
+      title1: '要美丽也要健康',
+      subtitle1: '9元起开始秒杀美妆和生活用品',
       imageUrl: 'https://img14.360buyimg.com/jdcms/s570x311_jfs/t13645/255/898921802/27305/cbf9cef6/5a169591N51c30d47.jpg!cc_570x311!q70'
   },
   {
-      title1: '2Earlier this morning, NYC',
-      subtitle1: 'Lorem ipsum dolor sit amet',
+      title1: '时尚水晶特卖',
+      subtitle1: '看直播领福利秒杀时尚珠宝',
       imageUrl: 'https://img10.360buyimg.com/jdcms/s570x311_jfs/t12967/334/899702520/188335/9d5aa5d4/5a168019N46a44ef3.jpg!cc_570x311!q70'
   },
   {
-      title1: '3White Pocket Sunset',
-      subtitle1: 'Lorem ipsum dolor sit amet et nuncat ',
+      title1: '一大波超值美食来袭 | 9块9包邮',
+      subtitle1: '99减50| 9块9包邮| 买二送 ',
       imageUrl: 'https://img11.360buyimg.com/jdcms/s570x311_jfs/t13978/183/241458447/178133/9e242758/5a065d1fN9396bbf1.jpg!cc_570x311!q70'
   },
   {
-      title1: '4Acrocorinth, Greece',
-      subtitle1: 'Lorem ipsum dolor sit amet et nuncat mergitur',
+      title1: '冬季巨补水',
+      subtitle1: '超值优惠',
       imageUrl: 'https://img10.360buyimg.com/jdcms/s370x278_jfs/t11530/152/2262091594/63052/bb014674/5a13b659Nb43ef070.jpg!q70.jpg'
   },
   {
-      title1: '5The lone tree, majestic landscape of New Zealand',
-      subtitle1: 'Lorem ipsum dolor sit amet',
+      title1: '美食美妆嗨起来',
+      subtitle1: '点赞抽奖',
       imageUrl: 'https://img13.360buyimg.com/jdcms/s370x278_jfs/t12475/308/823405400/153646/f9a4e293/5a13fbfbNdde6c8d0.jpg!q70.jpg'
   },
   {
-      title1: '6Middle Earth, Germany',
-      subtitle1: 'Lorem ipsum dolor sit amet',
+      title1: '保暖打底衣衫套装19元秒杀',
+      subtitle1: '限量50套',
       imageUrl: 'https://img11.360buyimg.com/jdcms/s370x278_jfs/t12400/299/722950596/92818/c1c2c42a/5a127d0bNbb07fe11.jpg!q70.jpg'
   }
 ];
