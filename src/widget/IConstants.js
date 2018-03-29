@@ -9,27 +9,13 @@ export const HEIGHT_NAV_BAR = 44;
 
 export const {width, height} = Dimensions.get('window');
 
-export const TOURIST_DAY_TYPE  = 'tourist_day_type';
 
 export const EventType = {
   HOME_REFRESH: 'home_refresh',
 
 };
 
-export const ItemType = {
-  Chi: 0,                 // 美食
-  CanTing: 1,             // 餐厅
-  Zhu: 2,                 // 酒店
-  Xing: 3,                // 行
-  You: 4,                 // 景区
-  Gou: 5,                 // 购物
-  Yu: 6,                  // 娱乐
-  TeChan: 7,              // 特产
-  XianLu: 8,              // 线路
-  C2CShop: 9,             // 商城商铺
-  Meeting: 10,            // 会议室
-  Diner: 11,              // 团餐
-};
+
 
 export const COLOR_BAR = '#407ab0';
 

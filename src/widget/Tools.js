@@ -4,7 +4,8 @@ import {
     Alert,
     ToastAndroid,
     Keyboard,
-    PixelRatio
+    PixelRatio,
+    Dimensions
 } from "react-native";
 import * as IConstants from './IConstants';
 import Toast from 'react-native-root-toast';
@@ -127,7 +128,17 @@ export default class Tools {
     }
 
 
-    
+    /**
+     * phone X
+     * @returns {boolean}
+     */
+    static  isIphoneX() {
+        let dimen = Dimensions.get('window');
+        return (
+            Platform.OS === 'ios' && !Platform.isPad && !Platform.isTVOS &&
+            (dimen.height === 812 || dimen.width === 812)
+        );
+    }
 
 }
 

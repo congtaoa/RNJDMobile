@@ -12,7 +12,8 @@ import {
     Animated,
     Dimensions,
     ImageBackground,
-    RefreshControl
+    RefreshControl,
+    DeviceEventEmitter
 } from 'react-native'
 
 import Swiper from '../widget/Swiper';
@@ -26,7 +27,6 @@ import { sliderWidth, itemWidth } from '../views/styles/SliderEntry.style';
 
 import  Tools from '../widget/Tools';
 import * as IConstants from '../widget/IConstants';
-import EventBus from '../widget/EventBus';
 import HomeHeaderView from "../views/home/HomeHeaderView";
 import HomeFastNewsView from "../views/home/HomeFastNewsView";
 import HomeSeckillView from "../views/home/HomeSeckillView";
@@ -99,18 +99,23 @@ export  default class HomeScreen extends Component {
         this.setState({listData: list,currentTime:nowTime});
         
         SplashScreen.hide()
+        //收到监听
+         this.homeListener = DeviceEventEmitter.addListener(IConstants.EventType.HOME_REFRESH,(e)=>{
+            this.handleEvent(IConstants.EventType.HOME_REFRESH)
+        });
     }
 
     componentWillMount(){
-        new EventBus().registerEvent(this, IConstants.EventType.HOME_REFRESH);
+
     }
 
     componentWillUnmount(){
-        new EventBus().unregisterEvent(this, IConstants.EventType.HOME_REFRESH);
+        this.homeListener.remove()
     }
 
-    handleEvent(params,type){
-        if (type == IConstants.EventType.HOME_REFRESH) {
+    handleEvent(type){
+        if (type == IConstants.EventType.HOME_REFRESH) 
+        {
             if(this.state.scrollOffset > 0){ // 如果已经滑动 先返回顶部再刷新
                 this.refs.listViewScroll._component.scrollToOffset({y: 0,animated: false});
                 setTimeout(()=>{
@@ -198,7 +203,7 @@ export  default class HomeScreen extends Component {
                 ?
                 null
                 :
-                <Animated.View style={{position:'absolute',top:0,width:IConstants.width,height:64,paddingTop:20,left:0,backgroundColor}}>
+                <Animated.View style={{position:'absolute',top:0,width:IConstants.width,height:Tools.isIphoneX() ? 84 : 64, paddingTop:Tools.isIphoneX()? 0 :20,left:0,backgroundColor}}>
                     <HomeHeaderView changedY={this.state.scrollOffset} intelligentVoice={()=>{this.intelligentVoice()}} scanTapped={()=>{this.scanTapped()}} />
                 </Animated.View>
             }

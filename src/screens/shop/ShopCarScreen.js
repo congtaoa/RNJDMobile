@@ -33,11 +33,7 @@ export  default class ShopCarScreen extends Component {
     render() {
         return (
             <View style={styles.container}>
-                <View style={styles.bg}>
-                     <Text style={{width:10,height:10,backgroundColor:'transparent'}}></Text>
-                     <Text style={styles.midTitle}>{'购物车'}</Text>
-                    <Image source={chatIcon} style={{ tintColor: '#888',marginRight:10}} />
-                </View>
+              
             </View>
         );
     }
@@ -50,20 +46,6 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: 'white'
-    },
-    bg:{
-        alignItems: 'center',
-        justifyContent: 'space-between',
-        flexDirection: 'row',
-        marginTop: IConstants.HEIGHT_STATUS_BAR,
-        height: IConstants.HEIGHT_NAV_BAR,
-        borderBottomWidth:1,
-        borderColor:'rgba(0,0,0,0.05)',
-        backgroundColor:'transparent'
-    },
-    midTitle :{
-        fontSize: 17,
-        color: '#444',
     },
 
 });

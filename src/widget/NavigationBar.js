@@ -12,6 +12,7 @@ import {
 } from 'react-native';
 import backIcon from '../assets/images/back.png';
 import * as IConstants from './IConstants';
+import Tools from './Tools';
 
 class NavigationBar extends Component {
     constructor(props) {
@@ -107,7 +108,8 @@ class NavigationBar extends Component {
 
 const styles = StyleSheet.create({
     barView: {
-      height: IConstants.HEIGHT_TOP_BAR,
+      paddingTop:Tools.isIphoneX() ? 20 : 0,
+      height: Tools.isIphoneX() ? 20 + IConstants.HEIGHT_TOP_BAR :IConstants.HEIGHT_TOP_BAR,
       // backgroundColor: IConstants.COLOR_BAR,
       zIndex: 10,
     },

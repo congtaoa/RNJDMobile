@@ -15,7 +15,8 @@ import voiceIcon from '../../assets/images/voice.png';
 import searchIcon from '../../assets/images/search.png';
 import scannIcon from '../../assets/images/scann.png';
 import chatIcon from '../../assets/images/chat_info.png';
-
+import Tools from '../../widget/Tools';
+import * as IConstants from '../../widget/IConstants';
 
 export default class HomeHeaderView extends Component{
     constructor(props){
@@ -56,6 +57,8 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'space-between',
         flexDirection: 'row',
+        paddingTop:Tools.isIphoneX() ? 30 : 0,
+        height:Tools.isIphoneX() ? 30 + IConstants.HEIGHT_TOP_BAR :IConstants.HEIGHT_TOP_BAR,
     },
     leftView:{
         paddingLeft:5,

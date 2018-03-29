@@ -20,6 +20,7 @@ import voiceIcon from '../../assets/images/voice.png';
 import searchIcon from '../../assets/images/search.png';
 import scannIcon from '../../assets/images/scann.png';
 import chatIcon from '../../assets/images/chat_info.png';
+import Tools from '../../widget/Tools';
 
 
 // create a component
@@ -130,8 +131,8 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'space-between',
         flexDirection: 'row',
-        marginTop: IConstants.HEIGHT_STATUS_BAR,
-        height: IConstants.HEIGHT_NAV_BAR,
+        paddingTop:Tools.isIphoneX() ? 40 : 20,
+        height: Tools.isIphoneX() ? IConstants.HEIGHT_TOP_BAR +20 :IConstants.HEIGHT_TOP_BAR,
         borderBottomWidth:1,
         borderColor:'rgba(0,0,0,0.05)',
         backgroundColor:'transparent'
@@ -158,10 +159,10 @@ const styles = StyleSheet.create({
     },
     leftMenuView:{
         position: 'absolute',
-        top: IConstants.HEIGHT_TOP_BAR,
+        top: Tools.isIphoneX() ? IConstants.HEIGHT_TOP_BAR +20 : IConstants.HEIGHT_TOP_BAR,
         left: 0,
         width: '25%',
-        height:(IConstants.height - (IConstants.HEIGHT_NAV_BAR + IConstants.HEIGHT_TOP_BAR))
+        height:Tools.isIphoneX() ? (IConstants.height - (IConstants.HEIGHT_NAV_BAR + IConstants.HEIGHT_TOP_BAR + 60)) :(IConstants.height - (IConstants.HEIGHT_NAV_BAR + IConstants.HEIGHT_TOP_BAR))
     },
     leftMenuItem:{
         alignItems:'center',
@@ -174,10 +175,10 @@ const styles = StyleSheet.create({
     rightMenuView:{
         backgroundColor:'rgba(0,0,0,0.05)',
         position: 'absolute',
-        top: IConstants.HEIGHT_TOP_BAR,
+        top: Tools.isIphoneX() ? IConstants.HEIGHT_TOP_BAR +20 :IConstants.HEIGHT_TOP_BAR,
         left: '25%',
         width: '75%',
-        height:(IConstants.height - (IConstants.HEIGHT_NAV_BAR + IConstants.HEIGHT_TOP_BAR))
+        height:Tools.isIphoneX() ? (IConstants.height - (IConstants.HEIGHT_NAV_BAR + IConstants.HEIGHT_TOP_BAR + 60)):(IConstants.height - (IConstants.HEIGHT_NAV_BAR + IConstants.HEIGHT_TOP_BAR))
     }
 });
 

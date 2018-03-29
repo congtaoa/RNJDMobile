@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { StatusBar,Animated, Easing} from 'react-native'
+import { StatusBar,Animated, Easing,DeviceEventEmitter} from 'react-native'
 import { StackNavigator, TabNavigator, TabBarBottom } from 'react-navigation';
 import CardStackStyleInterpolator from 'react-navigation/src/views/CardStack/CardStackStyleInterpolator';
 
@@ -24,7 +24,6 @@ import iconMe from './assets/images/toolbar_me.png';
 import iconMeSelected from './assets/images/toolbar_me_active.png';
 
 import * as IConstants from './widget/IConstants';
-import EventBus from './widget/EventBus';
 
 const lightContentScenes = ['Home', 'Mine']
 
@@ -60,25 +59,6 @@ const ScaleYTransition = (index, position) => {
     };
 };
 
-// 3D翻转
-const Flip3D = (index, position) => {
-    
-    const inputRange = [index - 1, index, index + 1];
-    const opacity = position.interpolate({
-        inputRange,
-        outputRange: [0, 1, 1],
-    });
-   
-    const translateY = position.interpolate({
-        inputRange:[0,1],
-        outputRange:['0deg','90deg']
-    })
-    
-    return {
-        opacity,
-        transform: [{translateY}],
-    };
-}
 
 //中心放大、缩小
 let CrossScaleTransition = (index, position) => {
@@ -142,7 +122,6 @@ let TransitionConfiguration = () => {
                 forVertical: CardStackStyleInterpolator.forVertical(sceneProps),//ForVertical(index , position),
                 forFadeFromBottomAndroid: CardStackStyleInterpolator.forFadeFromBottomAndroid(sceneProps),//forFadeFromBottomAndroid(index, position),
                 scaleY: ScaleYTransition(index, position),
-                flip3D:Flip3D(index, position),
                 croseScale:CrossScaleTransition(index,position),
                 fade:CrossFadeTransition(index,position),
             }[transition];
@@ -265,11 +244,10 @@ const Tab = TabNavigator(
                     const { state } = navigation
                     const { routes } = state
                     if (state.index === tabIndex && routes[tabIndex].index !== 0){
-                        // ex:再次点击选中Tab 刷新当前tab
                         if(tabIndex === 0){
-                            new EventBus().sendEvent({},IConstants.EventType.HOME_REFRESH);
+                            DeviceEventEmitter.emit(IConstants.EventType.HOME_REFRESH,''); //发监听
                         }else{
-                        //   Toast.show('再次点击选中Tab 刷新当前页面',{position: Toast.positions.CENTER});
+                       
                         }
                     }
                     else {
