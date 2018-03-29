@@ -97,8 +97,9 @@ export  default class HomeScreen extends Component {
             });
         }
         this.setState({listData: list,currentTime:nowTime});
-        
-        SplashScreen.hide()
+        if(IConstants.iOS){
+            SplashScreen.hide()
+        }
         //收到监听
          this.homeListener = DeviceEventEmitter.addListener(IConstants.EventType.HOME_REFRESH,(e)=>{
             this.handleEvent(IConstants.EventType.HOME_REFRESH)
@@ -137,7 +138,7 @@ export  default class HomeScreen extends Component {
             outputRange:['transparent','rgb(245,245,245)'],
             // extrapolate:'clamp',
         });
-        let headView = <HomeHeaderView changedY={this.state.scrollOffset} intelligentVoice={()=>{this.intelligentVoice()}} scanTapped={()=>{this.scanTapped()}} />
+        // let headView = <HomeHeaderView changedY={this.state.scrollOffset} intelligentVoice={()=>{this.intelligentVoice()}} scanTapped={()=>{this.scanTapped()}} />
 
         return (
             <View style={styles.container}>
@@ -203,7 +204,7 @@ export  default class HomeScreen extends Component {
                 ?
                 null
                 :
-                <Animated.View style={{position:'absolute',top:0,width:IConstants.width,height:Tools.isIphoneX() ? 84 : 64, paddingTop:Tools.isIphoneX()? 0 :20,left:0,backgroundColor}}>
+                <Animated.View style={{position:'absolute',top:0,width:IConstants.width,height:Tools.isIphoneX() ? 84 : 64, paddingTop:Tools.isIphoneX()? 0 : IConstants.HEIGHT_STATUS_BAR,left:0,backgroundColor}}>
                     <HomeHeaderView changedY={this.state.scrollOffset} intelligentVoice={()=>{this.intelligentVoice()}} scanTapped={()=>{this.scanTapped()}} />
                 </Animated.View>
             }
@@ -484,9 +485,11 @@ export  default class HomeScreen extends Component {
                 </View>
 
                 <ImageBackground source={{uri:this.state.bgImageUrl}} style={{width:IConstants.width,height:250}}>
-                    <BlurView blurType={'light'} blurAmount={5}
-                        style={styles.blurView} 
-                    />
+                   {
+                       IConstants.iOS && <BlurView blurType={'light'} blurAmount={5}
+                                style={styles.blurView} 
+                            />
+                    }
                     <Carousel
                         ref={(c) => { this._carousel = c; }}
                         data={this.state.cardImageList}

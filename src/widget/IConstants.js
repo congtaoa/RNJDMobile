@@ -8,8 +8,8 @@ export const HEIGHT_STATUS_BAR = (Platform.OS === 'android' ? 0 : 20);
 export const HEIGHT_NAV_BAR = 44;
 
 export const {width, height} = Dimensions.get('window');
-
-
+export const iOS = (Platform.OS === 'ios');
+export const Android = (Platform.OS === 'android');
 export const EventType = {
   HOME_REFRESH: 'home_refresh',
 

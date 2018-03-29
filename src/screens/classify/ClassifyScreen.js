@@ -131,7 +131,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'space-between',
         flexDirection: 'row',
-        paddingTop:Tools.isIphoneX() ? 40 : 20,
+        paddingTop:Tools.isIphoneX() ? 40 : IConstants.HEIGHT_STATUS_BAR,
         height: Tools.isIphoneX() ? IConstants.HEIGHT_TOP_BAR +20 :IConstants.HEIGHT_TOP_BAR,
         borderBottomWidth:1,
         borderColor:'rgba(0,0,0,0.05)',
