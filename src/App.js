@@ -245,7 +245,7 @@ const Tab = TabNavigator(
                     const { routes } = state
                     if (state.index === tabIndex && routes[tabIndex].index !== 0){
                         if(tabIndex === 0){
-                            DeviceEventEmitter.emit(IConstants.EventType.HOME_REFRESH,''); //发监听
+                            DeviceEventEmitter.emit(IConstants.EventType.HOME_REFRESH,{}); //发监听
                         }else{
                        
                         }
