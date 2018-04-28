@@ -1,8 +1,8 @@
 
 import React, { Component } from 'react'
 import { View, Text, StyleSheet, ScrollView, TouchableOpacity, ListView, Image, StatusBar } from 'react-native'
-
-
+import ShowMoreImages from '../../widget/ShowImages'
+import * as IConstants from '../../widget/IConstants';
 // create a component
 export  default class MineScreen extends Component {
 
@@ -10,7 +10,7 @@ export  default class MineScreen extends Component {
         super(props)
 
         this.state = {
-
+            images: IConstants.PhotoList,
         }
 
     }
@@ -23,7 +23,7 @@ export  default class MineScreen extends Component {
     render() {
         return (
             <View style={styles.container}>
-
+                <ShowMoreImages images={this.state.images} />
             </View>
         );
     }

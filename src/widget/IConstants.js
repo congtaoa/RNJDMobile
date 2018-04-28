@@ -19,6 +19,32 @@ export const EventType = {
 
 export const COLOR_BAR = '#407ab0';
 
+export const PhotoList= [
+  {key:'key1',url:'http://npic7.edushi.com/cn/zixun/zh-chs/2016-12/27/05f11a29c78049dbbd822a589380b4be.jpg'},
+  {key:'key2',url:'http://www.mvcat.com/music/upload/images/3351311442771496.jpg'},
+  {key:'key3',url:'http://uploads.oh100.com/allimg/1707/15-1FI115143E42.jpg'},
+  {key:'key4',url:'http://www.mvcat.com/music/upload/images/7938473955139647.jpg'},
+  {key:'key5',url:'http://img3.utuku.china.com/640x0/toutiao/20170906/4c7dd08e-568d-4387-a64c-cb8f24438811.jpg'},
+  {key:'key6',url:'https://img.laonanren.com/upload2/2016-11/16110911514916.jpg'},
+  {key:'key7',url:'https://img.vipcn.com/img2016/5/20/2016052055819629.jpg'},
+  {key:'key8',url:'http://www.haopic.me/wp-content/uploads/2015/09/2015091009022867.jpg'},
+
+
+  {key:'key11',url:'http://dingyue.nosdn.127.net/zAvJhFhYqh9eKs8flLBDMizcUTDW1HeEUpakfZZ6kojeV1486020888019transferflag.png'},
+
+  {key:'key13',url:'http://5b0988e595225.cdn.sohucs.com/images/20170914/e7c6fd73c18743ee9bd41def8aef2888.jpeg'},
+  {key:'key14',url:'https://img.laonanren.com/upload2/2016-11/16111810209833.jpg'},
+
+  {key:'key16',url:'https://img.yqdown.com/img2016/5/30/2016053069370329.jpg'},
+  {key:'key17',url:'https://resource.feng.com/resource/h063/h12/img201702092233410.jpg'},
+  {key:'key18',url:'http://www.haopic.me/wp-content/uploads/2015/09/2015091009022867.jpg'},
+
+  {key:'key20',url:'https://img2.vipcn.com/img2016/7/22/2016072233172287.jpg'},
+  {key:'key21',url:'https://img.vipcn.com/img2016/5/20/2016052055819629.jpg'},
+
+]
+
+
 export const ENTRIES1 = [
   {
       title1: '要美丽也要健康',
